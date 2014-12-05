@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+PATH=$PATH:/usr/local/bin:/usr/local/sbin
+
+# Run tests
+npm test
+if [ $? -ne 0 ]; then
+  echo "Tests failed. Aborting.."
+  exit 1
+fi
+
+exit 0

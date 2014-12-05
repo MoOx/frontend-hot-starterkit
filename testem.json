@@ -1,0 +1,5 @@
+{
+  "framework": "tap",
+  "before_tests": "npm run build-test",
+  "serve_files": ["dist/test.js"]
+}
