@@ -9,7 +9,7 @@ Frontend app with **hot reload / React / cssnext**.
 ```console
 $ git clone https://github.com/MoOx/frontend-hot-starterkit
 $ cd frontend-hot-starterkit
-$ npm i
+$ npm install
 ```
 
 ## Start & watch
@@ -37,10 +37,10 @@ $ npm install
 
 **Note:** Unix user can just link the `git-hooks/post-merge`:
 
-## Enable git hooks (unix only :/)
+## Enable git hooks
 
 ```console
-$ npm run create-hook-symlinks
+$ git-hooks/create-hook-symlinks
 ```
 
 ### `post-merge` (≃ `npm install`)

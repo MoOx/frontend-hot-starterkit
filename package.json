@@ -7,7 +7,7 @@
     "jscs": "jsxcs .",
     "eslint": "eslint . --ext=.js --ext=.jsx",
     "lint": "npm run --silent eslint && npm run --silent jscs",
-    "build": "webpack",
+    "build": "webpack -p",
     "server": "node scripts/server",
     "build-test": "node scripts/build-test",
     "pretest": "npm run lint --silent && npm run --silent build-test",
