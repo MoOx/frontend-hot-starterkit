@@ -10,8 +10,10 @@
     "build": "webpack -p",
     "server": "node scripts/server",
     "build-test": "node scripts/build-test",
-    "pretest": "npm run lint --silent && npm run --silent build-test",
-    "test": "testem ci"
+    "pretest": "npm run lint --silent",
+    "test": "npm run build && npm run --silent test-ci",
+    "pretest-ci": "npm run --silent build-test",
+    "test-ci": "testem ci"
   },
   "dependencies": {
     "cssrecipes-tooltip": "^0.5.0",
