@@ -6,14 +6,16 @@
     "start": "npm run server",
     "jscs": "jsxcs .",
     "eslint": "eslint . --ext=.js --ext=.jsx",
-    "lint": "npm run --silent eslint && npm run --silent jscs",
+    "lint": "npm run eslint && npm run jscs",
+    "pretest-ci": "npm run build-test",
+    "test-ci": "testem ci",
+    "pretest": "npm run lint",
+    "test": "npm run build && npm run test-ci",
+    "prebuild-test": "npm run lint",
+    "build-test": "node scripts/build-test",
     "build": "webpack -p -c",
     "server": "node scripts/server",
-    "build-test": "node scripts/build-test",
-    "pretest": "npm run lint --silent",
-    "test": "npm run build && npm run --silent test-ci",
-    "pretest-ci": "npm run --silent build-test",
-    "test-ci": "testem ci"
+    "server-test": "testem"
   },
   "dependencies": {
     "cssrecipes-tooltip": "^0.5.0",

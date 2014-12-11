@@ -1,28 +1,41 @@
 # Frontend Hot StarterKit
 
-Frontend app with **hot reload / React / cssnext**.
+> Frontend app with **hot reload / React / cssnext**.
+
+---
+
+- If you want to try this boilerplate, you can clone this repository directly.
+- If you want to start a similar project, take a look at the end of this README
+
+---
 
 ## [Requirements](REQUIREMENTS.md)
 
-## Install
+## Install dependencies
 
 ```console
-$ git clone https://github.com/MoOx/frontend-hot-starterkit
-$ cd frontend-hot-starterkit
 $ npm install
 ```
 
-## Start & watch
-
-```console
-$ npm start
-```
-
-## Simple build for production
+## Build the app for production
 
 ```console
 $ npm run build
 ```
+
+## Start app & watch changes
+
+```console
+$ npm run server
+```
+
+## Start tests & watch changes
+
+```console
+$ npm run server-test
+```
+
+_Note: you can run both app & test server at the same time ;)_
 
 ## Update sources
 
@@ -37,7 +50,7 @@ $ npm install
 
 **Note:** Unix user can just link the `git-hooks/post-merge`:
 
-## Enable git hooks
+## Enable git hooks (unix only :/)
 
 ```console
 $ git-hooks/create-hook-symlinks
@@ -72,9 +85,7 @@ Then it will try a production build.
 - Build tool + dev server: [webpack](http://webpack.github.io/)
 - Tests (in browsers): [testem](https://github.com/airportyh/testem) + [tape](https://github.com/substack/tape).
 
-
 ---
-
 
 ## Start a similar project
 
@@ -86,16 +97,19 @@ Create a directory with a `package.json` with this content
   "name": "my-project",
   "version": "0.0.0",
   "scripts": {
-    "prestart": "npm i",
     "start": "npm run server",
     "jscs": "jsxcs .",
     "eslint": "eslint . --ext=.js --ext=.jsx",
-    "lint": "npm run --silent eslint && npm run --silent jscs",
-    "build": "webpack",
-    "server": "node scripts/server",
+    "lint": "npm run eslint && npm run jscs",
+    "pretest-ci": "npm run build-test",
+    "test-ci": "testem ci",
+    "pretest": "npm run lint",
+    "test": "npm run build && npm run test-ci",
+    "prebuild-test": "npm run lint",
     "build-test": "node scripts/build-test",
-    "pretest": "npm run lint --silent && npm run --silent build-test",
-    "test": "testem ci"
+    "build": "webpack -p -c",
+    "server": "node scripts/server",
+    "server-test": "testem"
   },
   "dependencies": {
 
@@ -106,12 +120,12 @@ Create a directory with a `package.json` with this content
 }
 ```
 
-You should install latest version of some dependencies to start with recents versions (that why the snippet above doesn't contain any dep version)
+You should install versions of dependencies manually to start with up to date versions:
 
 ```console
-$ npm i -D 6to5 6to5-loader css-loader cssnext-loader eslint file-loader gaze glob jscs jsx-loader jsxcs onchange opn react-hot-loader style-loader tape testem webpack webpack-dev-server
+$ npm i -D 6to5 6to5-loader css-loader cssnext-loader yannickcr/eslint#deezer file-loader gaze glob jscs jsx-loader jsxcs onchange opn react-hot-loader style-loader tape testem webpack webpack-dev-server
 $ npm i -S react
 ```
 
-You should get this README & delete the last section (this one, yes).
+You should get this README & delete the first & last section (the notice about this section & this section, yes).
 You can also copy everything except the `package.json`.

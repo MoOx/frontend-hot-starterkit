@@ -1,5 +1,12 @@
 {
   "framework": "tap",
+  "src_files": ["web_modules/**/*"],
   "before_tests": "npm run build-test",
-  "serve_files": ["dist/test.js"]
+  "serve_files": ["dist/test.js"],
+  "launch_in_dev": [
+    "firefox",
+    "chrome",
+    "safari",
+    "internet explorer"
+  ]
 }

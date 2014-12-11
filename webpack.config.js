@@ -25,7 +25,11 @@ var config = {
     ]
   },
   plugins: [
-    new webpack.optimize.DedupePlugin()
+    new webpack.optimize.DedupePlugin(),
+    new webpack.DefinePlugin({
+      __DEV__: global.DEV,
+      __PROD__: !global.DEV
+    })
   ],
   // https://github.com/webpack/webpack/issues/451
   // run tape test with webpack
