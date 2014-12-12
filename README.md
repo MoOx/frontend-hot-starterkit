@@ -123,7 +123,7 @@ Create a directory with a `package.json` with this content
 You should install versions of dependencies manually to start with up to date versions:
 
 ```console
-$ npm i -D 6to5 6to5-loader css-loader cssnext-loader yannickcr/eslint#deezer file-loader gaze glob jscs jsx-loader jsxcs onchange opn react-hot-loader style-loader tape testem webpack webpack-dev-server
+$ npm i -D 6to5 6to5-loader css-loader cssnext-loader yannickcr/eslint#deezer file-loader glob jscs jsx-loader jsxcs onchange opn react-hot-loader style-loader tape testem webpack webpack-dev-server
 $ npm i -S react
 ```
 
