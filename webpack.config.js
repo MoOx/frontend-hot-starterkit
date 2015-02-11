@@ -7,12 +7,12 @@ var nodeModulesRE = /node_modules/
 
 // base config
 var config = {
-  entry: [
-    "./src/index" // app real entry point
-  ],
+  entry: {
+    index : "./src/index"
+  },
   output: {
     path: path.join(__dirname, "dist"), // Where to put build results when doing production builds
-    filename: "index.js" // filename you're going to use in HTML
+    filename: "[name].js" // filename you're going to use in HTML
   },
   resolve: {
     extensions: ["", ".js", ".jsx"] // Allow to omit extensions when requiring these files
@@ -54,8 +54,13 @@ if (global.DEV) {
   config.devServerUrl.port = process.env.npm_package_config_port || 3000
   config.devServerUrl.url = config.devServerUrl.protocol + config.devServerUrl.hostname + ":" + config.devServerUrl.port
 
-  config.entry.unshift("webpack/hot/only-dev-server") // HMR (Hot Module Replacement) runtime (server-agnostic)
-  config.entry.unshift("webpack-dev-server/client?" + config.devServerUrl.url) // listens to webpack-dev-server messages and passes them to HMR runtime
+  Object.keys(config.entry)
+    .forEach(function(key) {
+      config.entry[key] = [
+        "webpack/hot/only-dev-server",
+        "webpack-dev-server/client?" + config.devServerUrl.url
+      ].concat(config.entry[key])
+    })
 
   config.plugins.unshift(new webpack.NoErrorsPlugin()) // Error during build are not served in the browser
   config.plugins.unshift(new webpack.HotModuleReplacementPlugin()) // HMR
